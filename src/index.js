@@ -21,7 +21,6 @@ addUser.addEventListener("click", async () => {
     method: "GET"
   });
   const userJson = await userData.json();
-  console.log(userJson.results[0]);
   const user = userJson.results[0];
   const classUser = new User(
     user.name.title,
@@ -38,8 +37,7 @@ addUser.addEventListener("click", async () => {
 const domRenderer = (stateArr) => {
   userList.innerHTML = null;
   stateArr.forEach((userObj) => {
-    const userEl = document.createElement("div");
-    userEl.innerHTML = `<div>
+    userList.innerHTML += `<div>
     ${userObj.title}
     ${userObj.name} 
   <ol>
@@ -47,7 +45,6 @@ const domRenderer = (stateArr) => {
   <li>${userObj.email}</li>
   </ol>
   </div>`;
-    userList.appendChild(userEl);
   });
 };
 
